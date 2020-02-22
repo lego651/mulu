@@ -41,7 +41,7 @@ navi.style.maxWidth = '360px';
 navi.style.overflow = 'auto';
 
 headers.forEach((h) => {
-	if(h.innerHTML && h.innerHTML.length !== 0 && h.innerHTML.length < 60 && !hasBlockedWord(h.innerHTML, blockedWords)) {
+	if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
 		let hDiv = document.createElement('div');
 		hDiv.textContent = takeOffStrong(h.innerHTML);
 		hDiv.classList.add("my-item");
