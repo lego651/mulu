@@ -36,6 +36,7 @@ headers.forEach((h) => {
 	if(h.innerHTML && h.innerHTML.length !== 0 && h.innerHTML.length < 40 && !hasBlockedWord(h.innerHTML, blockedWords)) {
 		let hDiv = document.createElement('div');
 		hDiv.textContent = h.innerHTML;
+		hDiv.classList.add("my-item");
 		if(h.tagName === "H1") {
 			hDiv.classList.add("item-h1");
 			hDiv.style.fontWeight = "800";
