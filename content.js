@@ -3,20 +3,28 @@ console.log(headers);
 
 const blockedWords = [
 	"</a>",
-	"</button>",	
+	"</button>",
+	"</span>",	
 	"<!-- -->",
 	"Explore your membership",
 ];
 
 const hasBlockedWord = (str, blockedWords) => {
-	console.log(str);
 	for(let word of blockedWords) {
-		console.log(word);
 		if(str.includes(word)) {
 			return true;
 		}
 	}
 	return false;
+}
+
+const takeOffStrong = (word) => {
+	if(word.includes("<strong")) {
+  	let l = word.indexOf('>');
+    let r = word.indexOf("</strong");
+  	return word.substring(l + 1, r);
+  }
+  return word;
 }
 
 const navi = document.createElement('div');
@@ -33,16 +41,17 @@ navi.style.maxWidth = '360px';
 navi.style.overflow = 'auto';
 
 headers.forEach((h) => {
-	if(h.innerHTML && h.innerHTML.length !== 0 && h.innerHTML.length < 40 && !hasBlockedWord(h.innerHTML, blockedWords)) {
+	if(h.innerHTML && h.innerHTML.length !== 0 && h.innerHTML.length < 60 && !hasBlockedWord(h.innerHTML, blockedWords)) {
 		let hDiv = document.createElement('div');
-		hDiv.textContent = h.innerHTML;
+		hDiv.textContent = takeOffStrong(h.innerHTML);
 		hDiv.classList.add("my-item");
 		if(h.tagName === "H1") {
 			hDiv.classList.add("item-h1");
 			hDiv.style.fontWeight = "800";
 			hDiv.style.fontSize = "22px";
+			hDiv.style.lineHeight = "20px";
 			hDiv.style.cursor = "pointer";
-			hDiv.style.margin = "5px";
+			hDiv.style.margin = "8px";
 		} else if(h.tagName === "H2") {
 			hDiv.classList.add("item-h2");
 			hDiv.style.fontWeight = "600";
