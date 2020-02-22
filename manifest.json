@@ -2,18 +2,23 @@
   "manifest_version": 2,
 
   "name": "Medium Ready",
-  "description": "Neutralizes annoying parts of the Medium reading experience and lets you read again.",
+  "description": "read faster with well summarized catalog",
   "version": "0.1.0",
   "icons": {
     "128": "icon.png" 
   },
   "permissions": [
+    "declarativeContent",
     "storage",
     "activeTab",
     "https://*/*"
   ],
-  "browser_action": {
+  "page_action": {
     "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "content_scripts": [
     {
