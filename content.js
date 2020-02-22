@@ -29,6 +29,7 @@ navi.style.right = '0px';
 navi.style.backgroundColor = 'rgba(235, 235, 235, 1.0)';
 navi.style.borderRadius = '0 0 0 5px';
 navi.style.maxHeight = '600px';
+navi.style.maxWidth = '360px';
 navi.style.overflow = 'auto';
 
 headers.forEach((h) => {
@@ -64,7 +65,7 @@ headers.forEach((h) => {
 			// h.scrollIntoView({
 			// 	behavior: "smooth"
 			// });
-			const offset = 100;
+			const offset = 120;
 			const bodyRect = document.body.getBoundingClientRect().top;
 			const elementRect = h.getBoundingClientRect().top;
 			const elementPosition = elementRect - bodyRect;
