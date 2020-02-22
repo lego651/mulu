@@ -1,5 +1,33 @@
-const headers = document.querySelectorAll("h1,h2,h3,h4");
-console.log(headers);
+function GetElementsByExactClassName(someclass) {
+  var i, length, elementlist, data = [];
+
+  // Get the list from the browser
+  elementlist = document.getElementsByClassName(someclass);
+  if (!elementlist || !(length = elementlist.length))
+    return [];
+
+  // Limit by elements with that specific class name only
+  for (i = 0; i < length; i++) {
+    if (elementlist[i].className == someclass)
+      data.push(elementlist[i]);
+  }
+
+  // Return the result
+  return data;
+} 
+
+console.log(GetElementsByExactClassName("n p"));
+const extractedClassElements = GetElementsByExactClassName("n p");
+
+const content = extractedClassElements[2].innerHTML.length > extractedClassElements[3].innerHTML.length ? extractedClassElements[2] : extractedClassElements[3];
+
+// const loginNotPay = document.getElementsByClassName("n p")[6].innerHTML.length > document.getElementsByClassName("n p")[7].innerHTML.length ? document.getElementsByClassName("n p")[6] : document.getElementsByClassName("n p")[7];
+// const content = document.getElementsByClassName("n p")[3].innerHTML.length > loginNotPay.innerHTML.length ? document.getElementsByClassName("n p")[3] : loginNotPay;
+// const winner = document.getElementsByClassName("n p")[2].innerHTML.length > content.innerHTML.length ? document.getElementsByClassName("n p")[3].innerHTML : content;
+
+const headers = content.querySelectorAll("h1,h2,h3,h4");
+
+// console.log(document.getElementsByClassName("n p"));
 
 const blockedWords = [
 	"</a>",
