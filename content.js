@@ -24,16 +24,20 @@ function GetElementsByExactClassName(someclass) {
   return data;
 } 
 
-console.log(GetElementsByExactClassName("n p"));
+console.log(GetElementsByExactClassName("n p")); // 这个fn 返回的一定是个nodeList, 我们只需要里面的2 -> len - 3的nodes,其余不需要
 const extractedClassElements = GetElementsByExactClassName("n p");
+const len = extractedClassElements.length;
+const contentList = extractedClassElements.slice(1, len - 3);
+// const content = document.createElement("div");
+// nodeList.forEach((node) => content.appendChild(node.cloneNode(true)));
 
-const content = extractedClassElements[2].innerHTML.length > extractedClassElements[3].innerHTML.length ? extractedClassElements[2] : extractedClassElements[3];
+// const content = extractedClassElements[2].innerHTML.length > extractedClassElements[3].innerHTML.length ? extractedClassElements[2] : extractedClassElements[3];
 
 // const loginNotPay = document.getElementsByClassName("n p")[6].innerHTML.length > document.getElementsByClassName("n p")[7].innerHTML.length ? document.getElementsByClassName("n p")[6] : document.getElementsByClassName("n p")[7];
 // const content = document.getElementsByClassName("n p")[3].innerHTML.length > loginNotPay.innerHTML.length ? document.getElementsByClassName("n p")[3] : loginNotPay;
 // const winner = document.getElementsByClassName("n p")[2].innerHTML.length > content.innerHTML.length ? document.getElementsByClassName("n p")[3].innerHTML : content;
 
-const headers = content.querySelectorAll("h1,h2,h3,h4");
+// const headers = content.querySelectorAll("h1,h2,h3,h4");
 
 // console.log(document.getElementsByClassName("n p"));
 
@@ -43,6 +47,7 @@ const blockedWords = [
 	"</span>",	
 	"<!-- -->",
 	"Explore your membership",
+	"</div>"
 ];
 
 const hasBlockedWord = (str, blockedWords) => {
@@ -77,6 +82,7 @@ navi.style.maxHeight = '600px';
 navi.style.maxWidth = '360px';
 navi.style.overflow = 'auto';
 
+<<<<<<< HEAD
 headers.forEach((h) => {
 	if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
 		let hDiv = document.createElement('div');
@@ -107,24 +113,108 @@ headers.forEach((h) => {
 			hDiv.style.fontSize = "15px";
 			hDiv.style.cursor = "pointer";
 			hDiv.style.marginLeft = "40px";
+=======
+contentList.forEach(content => {
+	const headers = content.querySelectorAll("h1,h2,h3,h4");
+	headers.forEach((h) => {
+		if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
+			let hDiv = document.createElement('div');
+			hDiv.textContent = takeOffStrong(h.innerHTML);
+			hDiv.classList.add("my-item");
+			if(h.tagName === "H1") {
+				hDiv.classList.add("item-h1");
+				hDiv.style.fontWeight = "800";
+				hDiv.style.fontSize = "22px";
+				hDiv.style.lineHeight = "20px";
+				hDiv.style.cursor = "pointer";
+				hDiv.style.margin = "8px";
+			} else if(h.tagName === "H2") {
+				hDiv.classList.add("item-h2");
+				hDiv.style.fontWeight = "600";
+				hDiv.style.fontSize = "17px";
+				hDiv.style.cursor = "pointer";
+				hDiv.style.margin = "3px";
+				hDiv.style.marginLeft = "20px";
+			} else if(h.tagName === "H3") {
+				hDiv.classList.add("item-h1");
+				hDiv.style.fontSize = "16px";
+				hDiv.style.cursor = "pointer";
+				hDiv.style.margin = "2px";
+				hDiv.style.marginLeft = "35px";
+			} else if(h.tagName === "H4") {
+				hDiv.classList.add("item-h2");
+				hDiv.style.fontSize = "15px";
+				hDiv.style.cursor = "pointer";
+				hDiv.style.marginLeft = "40px";
+			}
+			hDiv.addEventListener("click", function() {
+				// h.scrollIntoView({
+				// 	behavior: "smooth"
+				// });
+				const offset = 120;
+				const bodyRect = document.body.getBoundingClientRect().top;
+				const elementRect = h.getBoundingClientRect().top;
+				const elementPosition = elementRect - bodyRect;
+				let offsetPosition = elementPosition - offset;
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: "smooth"
+				})
+			});
+			navi.append(hDiv);
+>>>>>>> 9cd71100ed23ff616012658566dc8f63cb07c5dc
 		}
-		hDiv.addEventListener("click", function() {
-			// h.scrollIntoView({
-			// 	behavior: "smooth"
-			// });
-			const offset = 120;
-			const bodyRect = document.body.getBoundingClientRect().top;
-			const elementRect = h.getBoundingClientRect().top;
-			const elementPosition = elementRect - bodyRect;
-			let offsetPosition = elementPosition - offset;
-			window.scrollTo({
-				top: offsetPosition,
-				behavior: "smooth"
-			})
-		});
-		navi.append(hDiv);
-	}
-});
+	});
+})
+
+// headers.forEach((h) => {
+// 	if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
+// 		let hDiv = document.createElement('div');
+// 		hDiv.textContent = takeOffStrong(h.innerHTML);
+// 		hDiv.classList.add("my-item");
+// 		if(h.tagName === "H1") {
+// 			hDiv.classList.add("item-h1");
+// 			hDiv.style.fontWeight = "800";
+// 			hDiv.style.fontSize = "22px";
+// 			hDiv.style.lineHeight = "20px";
+// 			hDiv.style.cursor = "pointer";
+// 			hDiv.style.margin = "8px";
+// 		} else if(h.tagName === "H2") {
+// 			hDiv.classList.add("item-h2");
+// 			hDiv.style.fontWeight = "600";
+// 			hDiv.style.fontSize = "17px";
+// 			hDiv.style.cursor = "pointer";
+// 			hDiv.style.margin = "3px";
+// 			hDiv.style.marginLeft = "20px";
+// 		} else if(h.tagName === "H3") {
+// 			hDiv.classList.add("item-h1");
+// 			hDiv.style.fontSize = "16px";
+// 			hDiv.style.cursor = "pointer";
+// 			hDiv.style.margin = "2px";
+// 			hDiv.style.marginLeft = "35px";
+// 		} else if(h.tagName === "H4") {
+// 			hDiv.classList.add("item-h2");
+// 			hDiv.style.fontSize = "15px";
+// 			hDiv.style.cursor = "pointer";
+// 			hDiv.style.marginLeft = "40px";
+// 		}
+// 		hDiv.addEventListener("click", function() {
+// 			// h.scrollIntoView({
+// 			// 	behavior: "smooth"
+// 			// });
+// 			const offset = 120;
+// 			const bodyRect = document.body.getBoundingClientRect().top;
+// 			const elementRect = h.getBoundingClientRect().top;
+// 			const elementPosition = elementRect - bodyRect;
+// 			let offsetPosition = elementPosition - offset;
+// 			window.scrollTo({
+// 				top: offsetPosition,
+// 				behavior: "smooth"
+// 			})
+// 		});
+// 		navi.append(hDiv);
+// 	}
+// });
 
 // document.body.appendChild(navi);
 
