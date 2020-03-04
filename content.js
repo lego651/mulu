@@ -72,7 +72,7 @@ const takeOffStrong = (word) => {
   	let f = word.indexOf('<strong');
   	let l = word.indexOf('>');
     let r = word.indexOf("</strong>");
-  	return word.substring(0, f) + word.substring(l + 1, r) + word.substring(r + 9);
+  	return takeOffStrong(word.substring(0, f)) + word.substring(l + 1, r) +takeOffStrong(word.substring(r + 9));
   }
   return word;
 }
@@ -121,7 +121,8 @@ contentList.forEach(content => {
 				hDiv.style.fontWeight = "600";
 				hDiv.style.fontSize = "17px";
 				hDiv.style.cursor = "pointer";
-				hDiv.style.margin = "2px";
+				hDiv.style.margin = "4px";
+				hDiv.style.marginTop = "7px";
 				hDiv.style.marginLeft = "24px";
 			} else if(h.tagName === "H3") {
 				hDiv.classList.add("item-h1");
