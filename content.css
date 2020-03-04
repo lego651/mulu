@@ -1,3 +1,7 @@
+.my-item {
+  font-family: "Lato";
+}
+
 .my-item:hover {
   color: #007fff;
 }

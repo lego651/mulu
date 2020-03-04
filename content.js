@@ -1,3 +1,11 @@
+const headID = document.getElementsByTagName('head')[0];
+let link = document.createElement('link');
+link.type = 'text/css';
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap';
+headID.appendChild(link);
+
+
 function GetElementsByExactClassName(someclass) {
   var i, length, elementlist, data = [];
 
@@ -62,7 +70,8 @@ navi.style.padding = '10px';
 navi.style.position = 'fixed';
 navi.style.top = '120px';
 navi.style.right = '0px';
-navi.style.backgroundColor = 'rgba(235, 235, 235, 1.0)';
+navi.style.color = 'white';
+navi.style.backgroundColor = 'rgba(10, 10, 10, 0.6)';
 navi.style.borderRadius = '0 0 0 5px';
 navi.style.maxHeight = '600px';
 navi.style.maxWidth = '360px';
@@ -75,15 +84,15 @@ headers.forEach((h) => {
 		hDiv.classList.add("my-item");
 		if(h.tagName === "H1") {
 			hDiv.classList.add("item-h1");
-			hDiv.style.fontWeight = "800";
-			hDiv.style.fontSize = "22px";
+			hDiv.style.fontWeight = "600";
+			hDiv.style.fontSize = "20px";
 			hDiv.style.lineHeight = "20px";
 			hDiv.style.cursor = "pointer";
-			hDiv.style.margin = "8px";
+			hDiv.style.margin = "10px";
 		} else if(h.tagName === "H2") {
 			hDiv.classList.add("item-h2");
 			hDiv.style.fontWeight = "600";
-			hDiv.style.fontSize = "17px";
+			hDiv.style.fontSize = "16px";
 			hDiv.style.cursor = "pointer";
 			hDiv.style.margin = "3px";
 			hDiv.style.marginLeft = "20px";
