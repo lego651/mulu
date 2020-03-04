@@ -82,38 +82,6 @@ navi.style.maxHeight = '600px';
 navi.style.maxWidth = '360px';
 navi.style.overflow = 'auto';
 
-<<<<<<< HEAD
-headers.forEach((h) => {
-	if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
-		let hDiv = document.createElement('div');
-		hDiv.textContent = takeOffStrong(h.innerHTML);
-		hDiv.classList.add("my-item");
-		if(h.tagName === "H1") {
-			hDiv.classList.add("item-h1");
-			hDiv.style.fontWeight = "600";
-			hDiv.style.fontSize = "20px";
-			hDiv.style.lineHeight = "20px";
-			hDiv.style.cursor = "pointer";
-			hDiv.style.margin = "10px";
-		} else if(h.tagName === "H2") {
-			hDiv.classList.add("item-h2");
-			hDiv.style.fontWeight = "600";
-			hDiv.style.fontSize = "16px";
-			hDiv.style.cursor = "pointer";
-			hDiv.style.margin = "3px";
-			hDiv.style.marginLeft = "20px";
-		} else if(h.tagName === "H3") {
-			hDiv.classList.add("item-h1");
-			hDiv.style.fontSize = "16px";
-			hDiv.style.cursor = "pointer";
-			hDiv.style.margin = "2px";
-			hDiv.style.marginLeft = "35px";
-		} else if(h.tagName === "H4") {
-			hDiv.classList.add("item-h2");
-			hDiv.style.fontSize = "15px";
-			hDiv.style.cursor = "pointer";
-			hDiv.style.marginLeft = "40px";
-=======
 contentList.forEach(content => {
 	const headers = content.querySelectorAll("h1,h2,h3,h4");
 	headers.forEach((h) => {
@@ -162,7 +130,6 @@ contentList.forEach(content => {
 				})
 			});
 			navi.append(hDiv);
->>>>>>> 9cd71100ed23ff616012658566dc8f63cb07c5dc
 		}
 	});
 })
