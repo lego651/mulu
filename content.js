@@ -47,7 +47,7 @@ const blockedWords = [
 	"</span>",	
 	"<!-- -->",
 	"Explore your membership",
-	"</div>"
+	"</div>",
 ];
 
 const hasBlockedWord = (str, blockedWords) => {
@@ -59,11 +59,30 @@ const hasBlockedWord = (str, blockedWords) => {
 	return false;
 }
 
+// const takeOffStrong = (word) => {
+// 	if(word.includes("<strong")) {
+//   	let l = word.indexOf('>');
+//     let r = word.indexOf("</strong");
+//   	return word.substring(l + 1, r);
+//   }
+//   return word;
+// }
 const takeOffStrong = (word) => {
 	if(word.includes("<strong")) {
+  	let f = word.indexOf('<strong');
   	let l = word.indexOf('>');
-    let r = word.indexOf("</strong");
-  	return word.substring(l + 1, r);
+    let r = word.indexOf("</strong>");
+  	return word.substring(0, f) + word.substring(l + 1, r) + word.substring(r + 9);
+  }
+  return word;
+}
+
+const takeOffEm = (word) => {
+	if(word.includes("<em")) {
+  	let f = word.indexOf('<em');
+  	let l = word.indexOf('>');
+    let r = word.indexOf("</em>");
+  	return word.substring(0, f) + word.substring(l + 1, r) + word.substring(r + 5);
   }
   return word;
 }
@@ -81,13 +100,13 @@ navi.style.borderRadius = '0 0 0 5px';
 navi.style.maxHeight = '600px';
 navi.style.maxWidth = '360px';
 navi.style.overflow = 'auto';
-
+	
 contentList.forEach(content => {
 	const headers = content.querySelectorAll("h1,h2,h3,h4");
 	headers.forEach((h) => {
-		if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
+		if(h.innerHTML && h.innerHTML.length !== 0 && !hasBlockedWord(h.innerHTML, blockedWords)) {
 			let hDiv = document.createElement('div');
-			hDiv.textContent = takeOffStrong(h.innerHTML);
+			hDiv.textContent = takeOffEm(takeOffStrong(h.innerHTML));
 			hDiv.classList.add("my-item");
 			if(h.tagName === "H1") {
 				hDiv.classList.add("item-h1");
