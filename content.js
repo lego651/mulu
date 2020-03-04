@@ -95,7 +95,7 @@ navi.style.position = 'fixed';
 navi.style.top = '120px';
 navi.style.right = '0px';
 navi.style.color = 'white';
-navi.style.backgroundColor = 'rgba(10, 10, 10, 0.6)';
+navi.style.backgroundColor = 'rgba(10, 10, 10, 0.75)';
 navi.style.borderRadius = '0 0 0 5px';
 navi.style.maxHeight = '600px';
 navi.style.maxWidth = '360px';
@@ -170,7 +170,7 @@ toggle.style.paddingLeft = "15px";
 toggle.style.paddingTop = "25px";
 toggle.style.textAlign = "center";
 toggle.style.cursor = "pointer";
-toggle.style.backgroundColor = 'rgba(10, 10, 10, 0.6)';
+toggle.style.backgroundColor = 'rgba(10, 10, 10, 0.75)';
 toggle.innerText = "M";
 document.body.appendChild(toggle);
 
