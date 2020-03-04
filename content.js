@@ -92,28 +92,29 @@ contentList.forEach(content => {
 			if(h.tagName === "H1") {
 				hDiv.classList.add("item-h1");
 				hDiv.style.fontWeight = "800";
-				hDiv.style.fontSize = "22px";
+				hDiv.style.fontSize = "20px";
 				hDiv.style.lineHeight = "20px";
 				hDiv.style.cursor = "pointer";
 				hDiv.style.margin = "8px";
+				hDiv.style.marginTop = "12px";
 			} else if(h.tagName === "H2") {
 				hDiv.classList.add("item-h2");
 				hDiv.style.fontWeight = "600";
 				hDiv.style.fontSize = "17px";
 				hDiv.style.cursor = "pointer";
-				hDiv.style.margin = "3px";
-				hDiv.style.marginLeft = "20px";
+				hDiv.style.margin = "2px";
+				hDiv.style.marginLeft = "24px";
 			} else if(h.tagName === "H3") {
 				hDiv.classList.add("item-h1");
 				hDiv.style.fontSize = "16px";
 				hDiv.style.cursor = "pointer";
 				hDiv.style.margin = "2px";
-				hDiv.style.marginLeft = "35px";
+				hDiv.style.marginLeft = "39px";
 			} else if(h.tagName === "H4") {
 				hDiv.classList.add("item-h2");
 				hDiv.style.fontSize = "15px";
 				hDiv.style.cursor = "pointer";
-				hDiv.style.marginLeft = "40px";
+				hDiv.style.marginLeft = "44px";
 			}
 			hDiv.addEventListener("click", function() {
 				// h.scrollIntoView({
