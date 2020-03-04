@@ -90,7 +90,7 @@ const takeOffEm = (word) => {
 const navi = document.createElement('div');
 navi.id = "medium-ready-container";
 navi.style.display = "block";
-navi.style.padding = '10px';
+navi.style.padding = '15px 12px';
 navi.style.position = 'fixed';
 navi.style.top = '120px';
 navi.style.right = '0px';
@@ -154,6 +154,35 @@ contentList.forEach(content => {
 		}
 	});
 })
+
+const toggle = document.createElement('div');
+toggle.id = "medium-ready-toggle";
+toggle.style.display = "block";
+toggle.style.position = 'fixed';
+toggle.style.top = '120px';
+toggle.style.right = '360px';
+toggle.style.width = "40px";
+toggle.style.height = "70px";
+toggle.style.borderRadius = "10px 0 0 10px";
+toggle.style.color = "white";
+toggle.style.padding = "10px";
+toggle.style.paddingLeft = "15px";
+toggle.style.paddingTop = "25px";
+toggle.style.textAlign = "center";
+toggle.style.cursor = "pointer";
+toggle.style.backgroundColor = 'rgba(10, 10, 10, 0.6)';
+toggle.innerText = "M";
+document.body.appendChild(toggle);
+
+toggle.addEventListener("click", function() {;
+	if(navi.style.display == "none") {
+		navi.style.display = "block";
+		toggle.style.right = '360px';
+	} else {
+		navi.style.display = "none";
+		toggle.style.right = "0px";
+	}
+});
 
 // headers.forEach((h) => {
 // 	if(h.innerHTML && h.innerHTML.length !== 0 && takeOffStrong(h.innerHTML).length < 65 && !hasBlockedWord(h.innerHTML, blockedWords)) {
