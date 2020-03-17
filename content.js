@@ -238,19 +238,26 @@ toggle.addEventListener("click", function() {;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if(request.data === "open") {
 		navi.style.display = "block";
+		toggle.style.display = "block";
 		document.body.appendChild(navi);
+		document.body.appendChild(toggle);
 	} else if(request.data === "close") {
 		navi.style.display = "none";
+		toggle.style.display = "none";
 	}
 });
 
 chrome.storage.sync.get('isOpen', function(data) {
 	if(data.isOpen) {
 		navi.style.display = "block";
+		toggle.style.display = "block";
 		document.body.appendChild(navi);
+		document.body.appendChild(toggle);
 	} else {
 		navi.style.display = "none";
+		toggle.style.display = "none";
 		document.body.removeChild(navi);
+		document.body.removeChild(toggle);
 	}
 });
 
